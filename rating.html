@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Star Rating</title>
+    <style>
+        body {
+            text-align: center;
+        }
+
+        .stars {
+            display: inline;
+            gap: 10px;
+            cursor: pointer;
+        }
+
+        .star {
+            font-size: 40px;
+            color: black;
+        }
+
+        .star.highlight {
+            color: orange;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+    <h1>Star Rating</h1>
+    <div class="stars">
+        <span class="star" data-value="1">&#9733;</span>
+        <span class="star" data-value="2">&#9733;</span>
+        <span class="star" data-value="3">&#9733;</span>
+        <span class="star" data-value="4">&#9733;</span>
+        <span class="star" data-value="5">&#9733;</span>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            $(".star").click(function () {
+                let rating = $(this).data("value"); 
+                
+                $(".star").removeClass("highlight");
+
+                $(".star").each(function () {
+                    if ($(this).data("value") <= rating) {
+                        $(this).addClass("highlight");
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

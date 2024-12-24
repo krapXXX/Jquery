@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fruit List</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+align-items: center;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+
+        .buttons {
+            margin-bottom: 20px;
+        }
+
+        .buttons button {
+            width: 80px;
+            padding: 10px 15px;
+            margin: 5px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            color: white;
+            font-weight: bold;
+        }
+
+        .btn-red {
+            background-color: rgba(255, 0, 0, 0.693);
+        }
+
+        .btn-green {
+            background-color: rgba(0, 128, 0, 0.784);
+        }
+
+        .btn-orange {
+            background-color: rgba(255, 166, 0, 0.822);
+        }
+
+        .btn-yellow {
+            background-color: rgba(225, 225, 25, 0.726);
+        }
+
+        .fruits {
+            display: flex;
+            justify-content: center;
+
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .fruit {
+            width: 150px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            text-align: center;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+        }
+        .red {
+            background-color: rgba(255, 0, 0, 0.693);
+
+        }
+
+        .green {
+            background-color: rgba(0, 128, 0, 0.784);
+        }
+
+        .orange {
+            background-color: rgba(255, 166, 0, 0.822);
+        }
+
+        .yellow {
+            background-color: rgba(225, 225, 25, 0.726);
+        }
+
+        .highlight {
+            box-shadow: 0 0 15px 3px rgba(0, 0, 0, 0.5);
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+    <div class="buttons">
+        <button class="btn-red" data-color="red">Red</button>
+        <button class="btn-green" data-color="green">Green</button>
+        <button class="btn-orange" data-color="orange">Orange</button>
+        <button class="btn-yellow" data-color="yellow">Yellow</button>
+    </div>
+
+    <div class="fruits">
+        <div class="fruit red">Apple</div>
+        <div class="fruit green">Kiwi</div>
+        <div class="fruit orange">Orange</div>
+        <div class="fruit yellow">Banana</div>
+        <div class="fruit red">Strawberry</div>
+        <div class="fruit green">Lime</div>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            $(".buttons button").click(function () {
+                let color = $(this).data("color");
+                $(".fruit").removeClass("highlight"); 
+                $(`.${color}`).addClass("highlight"); 
+            });
+        });
+    </script>
+</body>
+
+</html>

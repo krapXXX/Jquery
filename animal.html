@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animal Follows Cursor</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            background-image: url('back.jpg');
+            background-size: cover;
+            background-position: center;
+            overflow: hidden;
+        }
+
+        #animal {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            pointer-events: none;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+    <img id="animal" src="butterfly.png">
+
+    <script>
+        $(document).ready(function () {
+            let $animal = $('#animal');
+
+            $(document).on('mousemove', function (event) {
+                let windowWidth = $(window).width();
+                let windowHeight = $(window).height();
+                let animalWidth = $(animal).width();
+                let animalHeight = $(animal).height();
+
+                let leftCorner = event.pageX - animalWidth / 2;
+                let topCorner = event.pageY - animalHeight / 2;
+
+                if (leftCorner < 0) {
+                    leftCorner = 0;
+                } else if (leftCorner > windowWidth - animalWidth) {
+                    leftCorner = windowWidth - animalWidth;
+                }
+
+                if (topCorner < 0) {
+                    topCorner = 0;
+                } else if (topCorner > windowHeight - animalHeight) {
+                    topCorner = windowHeight - animalHeight;
+                }
+
+                $(animal).css({
+                    left: leftCorner + 'px',
+                    top: topCorner + 'px'
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
